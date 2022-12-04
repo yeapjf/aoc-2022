@@ -24,7 +24,6 @@ def get_result(file_path: str) -> list[int]:
             ):
                 any_overlap_count += 1
 
-        
         return full_overlap_count, any_overlap_count
 
 sample_results = get_result('sample.txt')
