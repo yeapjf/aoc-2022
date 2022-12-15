@@ -1,7 +1,8 @@
-# Return a list of [part_1_answer, part_2_answer]
-def get_result(file_path: str) -> [int, int]:
+# Return a list of (part_1_answer, part_2_answer)
+def get_result(file_path: str) -> (int, int):
     with open(file_path, 'r') as file:
         data = file.read().rstrip('\n')
+        lines = data.split('\n')
 
         return 0, 0
 
