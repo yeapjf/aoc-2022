@@ -10,7 +10,7 @@ def calculate_size(dir_sizes: dict, dir_contents: defaultdict, dir_path: str) ->
             total_size += int(v)
         else:
             total_size += dir_sizes[v]
-    
+
     dir_sizes[dir_path] = total_size
 
 # Return a list of [part_1_answer, part_2_answer]
@@ -44,13 +44,13 @@ def get_result(file_path: str) -> list[int]:
                     dir_contents[path_str].append(child_path_str)
                 elif size_m:
                     dir_contents[path_str].append(size_m.group(1))
-                
+
                 dir_contents[path_str].sort()
-                
+
         dir_sizes = {}
         for k in sorted(dir_contents.keys(), reverse=True, key=lambda v: len(v)):
             calculate_size(dir_sizes, dir_contents, k)
-            
+
         # Part 1
         small_dirs = { k: v for k, v in dir_sizes.items() if v <= 100000 }
         small_dirs_size = sum(small_dirs.values())

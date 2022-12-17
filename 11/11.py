@@ -53,7 +53,7 @@ def get_result(file_path: str) -> list[int]:
             if monkey_match:
                 current_monkey = int(monkey_match.group(1))
             elif items_match:
-                items_str = items_match.group(1) 
+                items_str = items_match.group(1)
                 items = list(map(int, items_str.split(',')))
                 monkey_items[current_monkey] = items[:]
                 monkey_items_2[current_monkey] = items[:]
@@ -76,7 +76,7 @@ def get_result(file_path: str) -> list[int]:
 
         for i in range(20):
             process_monkeys(monkey_num, monkey_items, monkey_operations, monkey_tests, monkey_inspections)
-            
+
         for i in range(10000):
             process_monkeys(monkey_num, monkey_items_2, monkey_operations, monkey_tests, monkey_inspections_2, True)
 

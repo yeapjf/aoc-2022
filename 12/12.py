@@ -8,7 +8,7 @@ def get_min_node(shortest_path: dict[str, int], visited: dict[str, bool]) -> [st
         if v < min_steps and not visited[k]:
             min_steps = v
             min_node = k
-    
+
     return min_node, min_steps
 
 def dijkstra(
@@ -23,7 +23,7 @@ def dijkstra(
     def calculate_steps(height: int, steps: int, new_i: int, new_j: int) -> int:
         if not (new_i >= 0 and new_i < rows and new_j >= 0 and new_j < columns):
             return -1
-        
+
         if height_map[new_i][new_j] - height < 2:
             new_pos = '%d,%d' % (new_i, new_j)
             new_steps = steps + 1
@@ -34,18 +34,18 @@ def dijkstra(
 
     for _ in range(rows * columns):
         pos, steps = get_min_node(shortest_path, visited)
-        
+
         # Dead end when pos is None
         if pos == end_pos or pos is None:
             return shortest_path[end_pos]
-            
+
         i, j = map(int, pos.split(','))
         height = height_map[i][j]
 
-        calculate_steps(height, steps, i + 1, j)         
-        calculate_steps(height, steps, i - 1, j)         
-        calculate_steps(height, steps, i, j + 1)         
-        calculate_steps(height, steps, i, j - 1)         
+        calculate_steps(height, steps, i + 1, j)
+        calculate_steps(height, steps, i - 1, j)
+        calculate_steps(height, steps, i, j + 1)
+        calculate_steps(height, steps, i, j - 1)
 
         visited[pos] = True
 
@@ -64,7 +64,7 @@ def get_result(file_path: str) -> [int, int]:
 
         for i, line in enumerate(lines):
             heights = []
-            
+
             for j, node in enumerate(line):
                 pos = '%d,%d' % (i, j)
 
@@ -90,7 +90,7 @@ def get_result(file_path: str) -> [int, int]:
         # Part 1
         min_steps = dijkstra(height_map[:], dict(shortest_path), dict(visited), start_pos, end_pos, {})
 
-        # Part 2      
+        # Part 2
         for pos in start_poses_shortest.keys():
             # Don't recalculate if shortest path already known
             if start_poses_shortest[pos] < math.inf:

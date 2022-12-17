@@ -41,16 +41,16 @@ def get_result(file_path: str) -> list[int]:
                     head_pos = (head_pos[0], head_pos[1] - 1)
                 elif direction == 'R':
                     head_pos = (head_pos[0], head_pos[1] + 1)
-                
+
                 tail_pos = calculate_tail_pos(head_pos, tail_pos)
                 visited.append(tail_pos)
-                
+
         unique_pos = len(set(visited))
 
         # Part 2
         poses = [(0, 0)] * 10
         tail_visited = [(0, 0)]
-        
+
         for step in steps:
             direction, num_steps = step.split(' ')
             num_steps = int(num_steps)
@@ -65,7 +65,7 @@ def get_result(file_path: str) -> list[int]:
                     head_pos = (head_pos[0], head_pos[1] - 1)
                 elif direction == 'R':
                     head_pos = (head_pos[0], head_pos[1] + 1)
-                
+
                 poses[0] = head_pos
                 for pos_index in range(1, len(poses)):
                     tail_pos = calculate_tail_pos(poses[pos_index - 1], poses[pos_index])
@@ -73,7 +73,7 @@ def get_result(file_path: str) -> list[int]:
 
                     if pos_index == len(poses) - 1:
                         tail_visited.append(tail_pos)
-                
+
         unique_tail_pos = len(set(tail_visited))
         return unique_pos, unique_tail_pos
 

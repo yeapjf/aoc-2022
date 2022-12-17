@@ -26,7 +26,7 @@ def recursive_compare(signal_1: Union[list, int], signal_2: Union[list, int]) ->
             order = recursive_compare([entry_1], entry_2)
         else:
             order = recursive_compare(entry_1, entry_2)
-        
+
         if order is not None:
             return order
 

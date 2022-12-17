@@ -66,5 +66,5 @@ with open('input.txt', 'r') as file:
     for play in plays:
         opp, outcome = play.split(' ')
         total_score_2 += outcome_score_2[outcome] + play_score_2[opp][outcome]
-    
+
     print(total_score_2)

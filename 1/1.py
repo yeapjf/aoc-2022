@@ -9,7 +9,7 @@ with open('input.txt', 'r') as file:
         calories = map(int, str_calories)
         total = sum(calories)
         all_calories.append(total)
-        
+
     # Part 1
     max_calories = max(all_calories)
     print(max_calories)

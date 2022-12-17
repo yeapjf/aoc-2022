@@ -15,7 +15,7 @@ with open('input.txt', 'r') as file:
         compartment_1, compartment_2 = rucksack[:len(rucksack)//2], rucksack[len(rucksack)//2:]
         common_item = list(set(compartment_1).intersection(compartment_2))[0]
         total_priority += calculate_priority(common_item)
-    
+
     print(total_priority)
 
     # Part 2

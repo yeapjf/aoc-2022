@@ -29,14 +29,14 @@ def get_result(file_path: str) -> list[int]:
                 cycle += 1
                 crt_pointer += 1
                 crt_pointer %= 40
-                
+
                 # Each add command takes 2 cycles, so run start of cycle actions
                 if crt_pointer in sprite_locations:
                     crt[cycle//40][crt_pointer] = '#'
 
                 if cycle in [20, 60, 100, 140, 180, 220]:
                     total_signal += cycle * x_value
-                
+
                 _, add_val = command.split(' ')
                 x_value += int(add_val)
                 sprite_locations = [x_value - 1, x_value, x_value + 1]

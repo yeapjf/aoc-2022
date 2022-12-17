@@ -38,14 +38,14 @@ def simulate_sand(scan_map: np.ndarray, sand_source: [int, int]) -> int:
                         scan_map[pos[0], pos[1]] = 'o'
                         total_sand += 1
                         full = True
-                        
+
                     falling = False
                     break
-        
+
         if not full:
             scan_map[pos[0], pos[1]] = 'o'
             total_sand += 1
-    
+
     return total_sand
 
 # Return (part_1_answer, part_2_answer)
@@ -73,9 +73,9 @@ def get_result(file_path: str) -> (int, int):
                     max_cols = x
                 if y > max_rows:
                     max_rows = y
-            
+
             rock_formations.append(formation)
-        
+
         scan_map = np.full((max_rows + 1, max_cols - col_offset + 1), '.')
         sand_source = [0, 500 - col_offset]
 
@@ -95,7 +95,7 @@ def get_result(file_path: str) -> (int, int):
                     col_from, col_to = sorted([pos_1_col, pos_1_col + pos_diff[1]])
                     col_to += 1
                     scan_map[pos_1_row,col_from:col_to] = '#'
-        
+
         # Part 1
         total_sand = simulate_sand(scan_map.copy(), sand_source)
 
@@ -109,7 +109,7 @@ def get_result(file_path: str) -> (int, int):
         extra_rows = [['.'] * cols, ['#'] * cols]
         scan_map_2 = np.vstack([scan_map_2, extra_rows])
         np.set_printoptions(linewidth=np.inf)
-        
+
         sand_source_2 = [0, sand_source[1] + rows]
         total_sand_2 = simulate_sand(scan_map_2, sand_source_2)
 

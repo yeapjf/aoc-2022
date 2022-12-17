@@ -40,7 +40,7 @@ def get_result(file_path: str) -> list[int]:
                         ]
                     ):
                         num_visible += 1
-                    
+
                     # Score calculation for tree (part 2)
                     for k, height in enumerate(left_trees):
                         if height >= pos_height or k == len(left_trees) - 1:
@@ -61,7 +61,7 @@ def get_result(file_path: str) -> list[int]:
                         if height >= pos_height or k == len(down_trees) - 1:
                             current_score *= (k + 1)
                             break
-                    
+
                     if current_score > max_score:
                         max_score = current_score
 

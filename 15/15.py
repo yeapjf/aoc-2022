@@ -17,7 +17,7 @@ def get_interval(coods: [(str, str)], y: int, x_max: int | None = None) -> [int 
 
 def get_merged_interval(sensors: [dict], y: int, x_max: int | None = None) -> [list]:
     intervals = []
-    
+
     for sensor in sensors:
         row_interval = get_interval(sensor, y)
         if row_interval != [None, None]:
@@ -50,12 +50,12 @@ def get_result(file_path: str) -> (int, int):
             b_x, b_y = map(int, list(coods[1]))
             sensors.append(coods)
             y_beacons.setdefault(b_y, set()).add(b_x)
-        
+
         # Part 1
         y = 10 if file_path == 'sample.txt' else 2000000
         merged_interval = get_merged_interval(sensors, y)
         row_total = 0
-            
+
         for interval in merged_interval:
             row_total += interval[1] - interval[0]
 
